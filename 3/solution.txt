@@ -68,10 +68,7 @@ def compress(s):
   counter = 0
   char_count = 1
 
-  print(len(s))
-
   for c in s:
-    print(counter)
     if (counter + 1) == len(s):
       break
 

@@ -53,6 +53,11 @@ const StringToUrl = s => {
       .join('');
 };
 
+const StringToUrl => s => {
+  return s.split(' ')
+    .join('%20');
+};
+
 --------------------------------------------------------------------------------
 
 Python:

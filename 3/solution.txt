@@ -27,11 +27,10 @@ const compress = (s) => {
     if (s[i] === s[i+1]) {
       count++;
     } else {
-      if (count === 1) {
-        stringCompressed += s[i];
-      } else {
-        stringCompressed += count + s[i]
+      if (count > 1) {
+        stringCompressed += count;
       }
+      stringCompressed += s[i];
       
       count = 1;
     }

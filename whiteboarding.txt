@@ -1,0 +1,56 @@
+Write an algorithm that determines whether all the elements in a string are
+unique. You may not convert the string into an array or use array methods to
+solve this problem. The algorithm should return a boolean. Example
+
+"bread" => True
+"mississippi" => False
+
+// let y = "test"
+// y[1] === "e"
+// let z = ["t", "e", "s", "t"]
+// z[1] === "e"
+
+// 'bread'.length = 5
+// i = 0, 1, 2, 3, 4
+// string.indexOf(element)
+// "test".indexOf("e") => 1
+// "test".indexOf("z") => -1
+// "tests".indexOf("s") => 2
+// string.lastIndexOf(element)
+// "test".lastIndexOf("e") => 1
+// "tests".lastIndexOf("s") => 4
+
+  // i = 0, stringToCheck[i] == "t"
+  // "test".lastIndexOf("t") => 3
+  // if (3 !== 0) return false;
+
+ord("t")
+ord("T")
+
+
+const unique = (stringToCheck) => {
+  for (let i = 0; i < stringToCheck.length; i++) {
+    if(stringToCheck.lastIndexOf(stringToCheck[i]) !== i) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+
+
+bool Unique(string s)
+{
+  foreach (char c in s)
+  {
+    if (s.Split(c).Length != 2)
+    {
+        return false;
+    }
+  }
+
+  return true;
+}
+
+--------------------------------------------------------------------------------

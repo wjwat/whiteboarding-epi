@@ -24,7 +24,7 @@ const compress = (s) => {
   let count = 1;
 
   for (let i = 0; i < s.length; i++) {
-    if (s[i] === s[i+1] && s[i+1] != undefined) {
+    if (s[i] === s[i+1]) {
       count++;
     } else {
       if (count === 1) {
@@ -58,3 +58,23 @@ const compress = (s) => {
     return count + s[0] + compress(s.slice(count));
   }
 };
+
+--------------------------------------------------------------------------------
+
+Python:
+
+def compress(s):
+  compressed = ''
+  count = 1
+
+  for i in range(len(s) - 1):
+    if s[i] == s[i+1]:
+      count += 1
+    else
+      if count == 1:
+        compressed += s[i]
+      else:
+        compressed += count + s[i]
+        count = 1
+
+  return compressed

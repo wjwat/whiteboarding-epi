@@ -17,6 +17,7 @@ Notes:
   - Strings in Python are immutable.
   - Recursion can be hard.
   - Lambdas are kind of cool
+  - I don't know C# nearly as well as I would like to.
 
 --------------------------------------------------------------------------------
 
@@ -118,8 +119,9 @@ string StringToUrl(string s)
     return s;
   }
 
-  // return ((s[0] == ' ') ? "%20" : s[0]) + StringToUrl(s.Substring(1));
+  return ((s[0] == ' ') ? "%20" : s[0]) + StringToUrl(s.Substring(1));
 
+  /*
   if (s[0] == ' ')
   {
     return "%20" + StringToUrl(s.Substring(1));
@@ -128,4 +130,7 @@ string StringToUrl(string s)
   {
     return s[0] + StringToUrl(s.Substring(1));
   }
+  */
 }
+
+--------------------------------------------------------------------------------

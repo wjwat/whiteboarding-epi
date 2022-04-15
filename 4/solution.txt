@@ -11,3 +11,39 @@ Output: false
 Input: "copyright"
 
 Output: true
+
+--------------------------------------------------------------------------------
+
+Notes:
+  - Things are getting a little better here, but I'm definitely going to come
+    back and look at some of these problems.
+
+--------------------------------------------------------------------------------
+
+const unique = (s) => {
+  for (let i = 0; i < s.length; i++) {
+    let t = s.indexOf(s[i]);
+
+    if (t === i || t === -1) {
+      continue;
+    } else {
+      return false;
+    }
+  }
+
+  return true;
+};
+
+const unique = (s) => {
+  if (s.length === 0) {
+    return true;
+  }
+
+  let t = s.slice(1).indexOf(s[0]);
+
+  if (t !== -1) {
+    return false;
+  } else {
+    return unique(s.slice(1));
+  }
+};

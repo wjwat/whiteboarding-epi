@@ -8,3 +8,53 @@ without recursion. Example
 Input: "aaabccdddda"
 
 Output: "3ab2c4da"
+
+--------------------------------------------------------------------------------
+
+Notes:
+  - Not feeling recursion.
+
+--------------------------------------------------------------------------------
+
+JavaScript:
+
+// Iteration
+const compress = (s) => {
+  let stringCompressed = '';
+  let count = 1;
+
+  for (let i = 0; i < s.length; i++) {
+    if (s[i] === s[i+1] && s[i+1] != undefined) {
+      count++;
+    } else {
+      if (count === 1) {
+        stringCompressed += s[i];
+      } else {
+        stringCompressed += count + s[i]
+      }
+      
+      count = 1;
+    }
+  }
+
+  return stringCompressed;
+};
+
+// Recursion
+const compress = (s) => {
+  if (s.length === 0) {
+    return s;
+  }
+
+  let count = 1;
+
+  while (s[count-1] === s[count]) {
+    count += 1;
+  }
+
+  if (count === 1) {
+    return s[0] + compress(s.slice(1));
+  } else {
+    return count + s[0] + compress(s.slice(count));
+  }
+};

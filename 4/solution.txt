@@ -17,9 +17,11 @@ Output: true
 Notes:
   - Things are getting a little better here, but I'm definitely going to come
     back and look at some of these problems.
+  - What are array methods in this case?
 
 --------------------------------------------------------------------------------
 
+// Iteration
 const unique = (s) => {
   for (let i = 0; i < s.length; i++) {
     let t = s.indexOf(s[i]);
@@ -34,6 +36,7 @@ const unique = (s) => {
   return true;
 };
 
+// Recursion
 const unique = (s) => {
   if (s.length === 0) {
     return true;
@@ -46,4 +49,31 @@ const unique = (s) => {
   } else {
     return unique(s.slice(1));
   }
+};
+
+// Not using indexOf
+const unique = (s) => {
+  for (let i = 0; i < s.length; i++) {
+    for (let j = i+1; j < s.length; j++) {
+      if (s[i] === s[j]) {
+        return false;
+      }
+    }
+  }
+  return true;
+};
+
+// Not using indexOf with recursion
+const unique = (s) => {
+  if (s.length === 1) {
+    return true;
+  }
+
+  for (let i = 1; i < s.length; i++) {
+    if (s[0] === s[i]) {
+      return false;
+    }
+  }
+
+  return unique(s.slice(1));
 };

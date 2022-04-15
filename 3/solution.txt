@@ -65,16 +65,27 @@ Python:
 
 def compress(s):
   compressed = ''
-  count = 1
+  counter = 0
+  char_count = 1
 
-  for i in range(len(s) - 1):
-    if s[i] == s[i+1]:
-      count += 1
-    else
-      if count == 1:
-        compressed += s[i]
+  print(len(s))
+
+  for c in s:
+    print(counter)
+    if (counter + 1) == len(s):
+      break
+
+    if c == s[counter+1]:
+      char_count += 1
+    else:
+      if char_count == 1:
+        compressed += c
       else:
-        compressed += count + s[i]
-        count = 1
+        compressed += str(char_count) + c
+
+      char_count = 1
+    counter += 1
+
+  compressed += str(char_count) + s[-1]
 
   return compressed

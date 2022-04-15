@@ -54,7 +54,7 @@ const unique = (s) => {
 // Not using indexOf
 const unique = (s) => {
   for (let i = 0; i < s.length; i++) {
-    for (let j = i+1; j < s.length; j++) {
+    for (let j = i + 1; j < s.length; j++) {
       if (s[i] === s[j]) {
         return false;
       }
@@ -77,3 +77,76 @@ const unique = (s) => {
 
   return unique(s.slice(1));
 };
+
+// lastIndexOf
+const unique = (s) => {
+  for (let i = 0; i < s.length; i++) {
+    if (s.lastIndexOf(s[i]) !== i) {
+      return false
+    }
+  }
+  return true
+};
+
+--------------------------------------------------------------------------------
+
+Python:
+
+unique = lambda s : all([True if s.count(c) == 1 else False for c in s])
+
+def unique(s):
+  return all([True if s.count(c) == 1 else False for c in s])
+
+def unique(s):
+  for c in s:
+    if s.count(c) != 1:
+      return False
+  
+  return True
+
+--------------------------------------------------------------------------------
+
+C#:
+
+using System.Linq;
+
+bool Unique(string s)
+{
+  foreach (char c in s)
+  {
+    if (s.Count(b => b == c) != 1)
+    {
+        return false;
+    }
+  }
+
+  return true;
+}
+
+
+bool Unique(string s)
+{
+  foreach (char c in s)
+  {
+    if (s.Split(c).Length != 2)
+    {
+        return false;
+    }
+  }
+
+  return true;
+}
+
+// No idea where I was going with this.
+bool Unique<T>(IEnumerable<T> seq)
+{
+  foreach (T e in seq)
+  {
+    if (s.Count(b => b == e) != 1)
+    {
+      return false;
+    }
+  }
+
+  return true;
+}

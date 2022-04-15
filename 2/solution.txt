@@ -47,6 +47,13 @@ const removeDuplicates = (a) => {
 };
 
 // Filter
+// e: 7  i: 0 indexOf: true
+// e: 9  i: 1 indexOf: true
+// e: hi i: 2 indexOf: true
+// e: 12 i: 3 indexOf: true
+// e: hi i: 4 indexOf: false <= indexOf will return the _FIRST_ occurrence of `hi`
+// e: 7  i: 5 indexOf: false <= indexOf will return the _SECOND_ occurrence of `hi`
+// e: 53 i: 6 indexOf: true
 const removeDuplicates = (a) => {
   return a.filter((e, i) => a.indexOf(e) === i);
 };
@@ -55,3 +62,33 @@ const removeDuplicates = (a) => {
 const removeDuplicates = (a) => {
   return [...new Set(a)];
 };
+
+--------------------------------------------------------------------------------
+
+Python:
+
+# reorders items
+def remove_duplicates(l: list):
+  return list(set(l))
+
+# preserves order
+def remove_duplicates(l: list):
+  return list(dict.fromkeys(l))
+
+def unique(l: list):
+    values = []
+
+    for i in l:
+        if i in values:
+            continue
+        else:
+            values.append(i)
+    return values
+
+def unique(l: list):
+    values = []
+
+    for i in l:
+        if i not in values:
+            values.append(i)
+    return values

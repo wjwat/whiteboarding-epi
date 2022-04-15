@@ -1,0 +1,131 @@
+Question #1: Turning Strings to URLs
+
+URLs cannot have spaces. Instead, all spaces in a string are replaced with %20.
+Write an algorithm that replaces all spaces in a string with %20.
+
+You may not use the replace() method or regular expressions to solve this
+problem. Solve the problem with and without recursion. Example
+
+Input: "Jasmine Ann Jones"
+
+Output: "Jasmine%20Ann%20Jones"
+
+--------------------------------------------------------------------------------
+
+Notes:
+  - Strings in JavaScript are immutable.
+  - Strings in Python are immutable.
+  - Recursion can be hard.
+  - Lambdas are kind of cool
+
+--------------------------------------------------------------------------------
+
+JavaScript:
+
+// Iteration
+const StringToUrl = s => {
+  let returnString = '';
+  for (let i = 0; i < s.length; i++) {
+    if (s[i] === ' ') {
+      returnString += '%20';
+    } else {
+      returnString += s[i];
+    }
+  }
+
+  return returnString;
+};
+
+// Recursion
+const StringToUrl = s => {
+  if (s.length === 0) {
+    return s;
+  }
+
+  return ((s[0] === ' ') ? '%20' : s[0]) + StringToUrl(s.slice(1));
+};
+
+// Map
+const StringToUrl = s => {
+  return s.split('')
+      .map(c => (c === ' ') ? '%20' : c)
+      .join('');
+};
+
+--------------------------------------------------------------------------------
+
+Python:
+
+# Iteration
+def string_to_url(s):
+  return_string = ''
+
+  for c in s:
+    if c == ' ':
+      return_string += '%20'
+    else:
+      return_string += c
+
+  return return_string
+
+# Recursion
+def string_to_url(s):
+  if s == '':
+    return s
+  
+  if s[0] == ' ':
+    return '%20' + string_to_url(s[1:])
+  else:
+    return s[0] + string_to_url(s[1:])
+
+# List comprehension
+def string_to_url(s):
+  return ''.join([c if c != ' ' else '%20' for c in s])
+
+# map & lambda
+def string_to_url(s):
+  return ''.join(map(lambda c : c if c != ' ' else '%20', s))
+
+--------------------------------------------------------------------------------
+
+C#
+
+// Iteration
+string StringToUrl(string s)
+{
+  string returnString = "";
+
+  foreach (char c in s)
+  {
+    if (c == ' ')
+    {
+      returnString += "%20";
+    }
+    else
+    {
+      returnString += c;
+    }
+  }
+
+  return returnString;
+}
+
+// Recursion
+string StringToUrl(string s)
+{
+  if (s.Length == 0)
+  {
+    return s;
+  }
+
+  // return ((s[0] == ' ') ? "%20" : s[0]) + StringToUrl(s.Substring(1));
+
+  if (s[0] == ' ')
+  {
+    return "%20" + StringToUrl(s.Substring(1));
+  }
+  else
+  {
+    return s[0] + StringToUrl(s.Substring(1));
+  }
+}

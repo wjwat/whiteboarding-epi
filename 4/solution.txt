@@ -88,6 +88,16 @@ const unique = (s) => {
   return true
 };
 
+// indexOf
+const unique = (s) => {
+  for (let i = s.length-1; i >= 0; i--) {
+    if (s.indexOf(s[i]) !== i) {
+      return false;
+    }
+  }
+  return true;
+};
+
 --------------------------------------------------------------------------------
 
 Python:

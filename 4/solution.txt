@@ -63,6 +63,17 @@ const unique = (s) => {
   return true;
 };
 
+const unique = (s) => {
+  for (let i = 1; i < s.length; i++) {
+    for (let j = 0; j < i; j++) {
+      if (s[i] === s[j]) {
+        return false;
+      }
+    }
+  }
+  return true;
+};
+
 // Not using indexOf with recursion
 const unique = (s) => {
   if (s.length === 1) {
